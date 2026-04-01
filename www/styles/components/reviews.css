@@ -1,0 +1,40 @@
+/* --- REVIEWS --- */
+.reviews__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.review-card {
+    background: var(--white);
+    border: 1px solid #eee;
+    padding: 25px;
+    border-radius: var(--border-radius);
+}
+
+.review-card__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.review-card__author {
+    font-weight: 700;
+}
+
+.review-card__rating {
+    color: #f1c40f;
+}
+
+.reviews__controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .reviews__grid {
+        grid-template-columns: 1fr;
+    }
+}

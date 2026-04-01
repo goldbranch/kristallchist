@@ -1,0 +1,37 @@
+/* --- QUALITY CONTROL --- */
+.quality-control {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+}
+
+.quality-control .section-title {
+    color: var(--white);
+}
+
+.quality-control__message {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-size: 1.1rem;
+}
+
+.quality-control__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn--white {
+    background-color: var(--white);
+    color: var(--primary-color);
+}
+
+.btn--white:hover {
+    background-color: #f1f2f6;
+}
+
+@media (max-width: 768px) {
+    .quality-control__buttons {
+        flex-direction: column;
+    }
+}
