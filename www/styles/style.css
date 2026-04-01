@@ -1,48 +1,53 @@
 @import url("./global.css");
 @import url("./utilities.css");
-  @import url("./components/header.css");     
+@import url("./components/header.css");
 
-      @import url("./components/promo.css");
+@import url("./components/promo.css");
 
 
-   @import url("./components/services.css");
-   @import url("./components/how-it-works.css");
+@import url("./components/services.css");
+@import url("./components/how-it-works.css");
 
-        @import url("./components/reviews.css");
-        @import url("./components/faq.css");
+@import url("./components/reviews.css");
+@import url("./components/faq.css");
 
-      @import url("./components/quality-control.css");
+@import url("./components/quality-control.css");
 
-       @import url("./components/news.css");
+@import url("./components/news.css");
 @import url("./components/modal.css");
-      
+@import url("./components/footer.css");
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 1024px) {
-            .services__grid, .news__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
 
-        @media (max-width: 768px) {
-            .header__inner {
-                flex-direction: column;
-                gap: 10px;
-            }
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
 
-            .promo__inner {
-                grid-template-columns: 1fr;
-            }
+    .services__grid,
+    .news__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
-            .services__grid, .reviews__grid, .news__grid {
-                grid-template-columns: 1fr;
-            }
+@media (max-width: 768px) {
+    .header__inner {
+        flex-direction: column;
+        gap: 10px;
+    }
 
-            .steps {
-                flex-direction: column;
-            }
+    .promo__inner {
+        grid-template-columns: 1fr;
+    }
 
-            .quality-control__buttons {
-                flex-direction: column;
-            }
-        }
+    .services__grid,
+    .reviews__grid,
+    .news__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .steps {
+        flex-direction: column;
+    }
+
+    .quality-control__buttons {
+        flex-direction: column;
+    }
+}
