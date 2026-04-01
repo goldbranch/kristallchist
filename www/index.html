@@ -18,13 +18,52 @@
                 <i class="fas fa-gem"></i> КристаллЧист
             </div>
             
-            <select class="header__district">
-                <option value="center">Центральный округ</option>
-                <option value="north">Северный округ</option>
-                <option value="south">Южный округ</option>
-                <option value="east">Восточный округ</option>
-                <option value="west">Западный округ</option>
-            </select>
+            <button class="header__district-btn" data-popover-target="district-popover">
+                <i class="fas fa-map-marker-alt"></i>
+                <span class="header__district-name">Выберите район</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+
+            <div class="header__popover popover" id="district-popover" data-popover>
+                <div class="popover__header">
+                    <h3>Районы Москвы</h3>
+                    <button class="popover__close" data-popover-close>&times;</button>
+                </div>
+                <div class="popover__content">
+                    <div class="districts-grid">
+                        <button class="district-item" data-district="Арбат">Арбат</button>
+                        <button class="district-item" data-district="Басманный">Басманный</button>
+                        <button class="district-item" data-district="Замоскворечье">Замоскворечье</button>
+                        <button class="district-item" data-district="Хамовники">Хамовники</button>
+                        <button class="district-item" data-district="Якиманка">Якиманка</button>
+                        <button class="district-item" data-district="Академический">Академический</button>
+                        <button class="district-item" data-district="Гагаринский">Гагаринский</button>
+                        <button class="district-item" data-district="Черёмушки">Черёмушки</button>
+                        <button class="district-item" data-district="Котловка">Котловка</button>
+                        <button class="district-item" data-district="Зюзино">Зюзино</button>
+                        <button class="district-item" data-district="Бабушкинский">Бабушкинский</button>
+                        <button class="district-item" data-district="Лосиноостровский">Лосиноостровский</button>
+                        <button class="district-item" data-district="Марьина Роща">Марьина Роща</button>
+                        <button class="district-item" data-district="Алтуфьевский">Алтуфьевский</button>
+                        <button class="district-item" data-district="Медведково">Медведково</button>
+                        <button class="district-item" data-district="Выхино-Жулебино">Выхино-Жулебино</button>
+                        <button class="district-item" data-district="Марьино">Марьино</button>
+                        <button class="district-item" data-district="Люблино">Люблино</button>
+                        <button class="district-item" data-district="Кузьминки">Кузьминки</button>
+                        <button class="district-item" data-district="Нижегородский">Нижегородский</button>
+                        <button class="district-item" data-district="Перово">Перово</button>
+                        <button class="district-item" data-district="Измайлово">Измайлово</button>
+                        <button class="district-item" data-district="Богородское">Богородское</button>
+                        <button class="district-item" data-district="Преображенское">Преображенское</button>
+                        <button class="district-item" data-district="Соколиная Гора">Соколиная Гора</button>
+                        <button class="district-item" data-district="Митино">Митино</button>
+                        <button class="district-item" data-district="Строгино">Строгино</button>
+                        <button class="district-item" data-district="Тушино">Тушино</button>
+                        <button class="district-item" data-district="Щукино">Щукино</button>
+                        <button class="district-item" data-district="Южное Бутово">Южное Бутово</button>
+                    </div>
+                </div>
+            </div>
 
             <div class="header__company-name">
                 Химчистка на дому
@@ -346,14 +385,60 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- FAQ Logic ---
-            const faqQuestions = document.querySelectorAll('.faq__question');
+            // --- District Popover ---
+            const districtBtn = document.querySelector('.header__district-btn');
+            const districtPopover = document.getElementById('district-popover');
+            const districtClose = document.querySelector('[data-popover-close]');
+            const districtItems = document.querySelectorAll('.district-item');
+            const districtName = document.querySelector('.header__district-name');
 
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', () => {
-                    const item = question.parentElement;
-                    item.classList.toggle('active');
+            // Load saved district from localStorage
+            const savedDistrict = localStorage.getItem('selectedDistrict');
+            if (savedDistrict) {
+                districtName.textContent = savedDistrict;
+                districtItems.forEach(item => {
+                    if (item.dataset.district === savedDistrict) {
+                        item.classList.add('active');
+                    }
                 });
+            }
+
+            // Toggle popover
+            districtBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                districtPopover.classList.toggle('popover--active');
+                districtBtn.classList.toggle('active');
+            });
+
+            // Close popover on close button
+            districtClose.addEventListener('click', () => {
+                districtPopover.classList.remove('popover--active');
+                districtBtn.classList.remove('active');
+            });
+
+            // Select district
+            districtItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const district = item.dataset.district;
+                    districtName.textContent = district;
+                    localStorage.setItem('selectedDistrict', district);
+
+                    districtItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+
+                    districtPopover.classList.remove('popover--active');
+                    districtBtn.classList.remove('active');
+                });
+            });
+
+            // Close on click outside
+            document.addEventListener('click', (e) => {
+                if (districtPopover.classList.contains('popover--active') &&
+                    !districtPopover.contains(e.target) &&
+                    !districtBtn.contains(e.target)) {
+                    districtPopover.classList.remove('popover--active');
+                    districtBtn.classList.remove('active');
+                }
             });
 
             // --- Modal Logic ---

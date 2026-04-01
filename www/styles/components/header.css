@@ -24,21 +24,158 @@
     gap: 10px;
 }
 
-.header__district {
-    padding: 8px 12px;
+.header__district-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
     border: 1px solid #ddd;
     border-radius: var(--border-radius);
-    outline: none;
+    background: var(--white);
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
 }
 
-.header__phone {
-    font-weight: 700;
+.header__district-btn:hover {
+    border-color: var(--primary-color);
+    background: #f8f9fa;
+}
+
+.header__district-btn i:last-child {
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+
+.header__district-btn.active i:last-child {
+    transform: rotate(180deg);
+}
+
+.header__district-name {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Popover */
+.header__popover {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid #eee;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    min-width: 400px;
+    max-width: 600px;
+}
+
+.header__popover.popover--active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.popover__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.popover__header h3 {
+    margin: 0;
     font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+.popover__close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #999;
+    line-height: 1;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.popover__close:hover {
+    background: #f5f5f5;
+    color: var(--text-dark);
+}
+
+.popover__content {
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.districts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.district-item {
+    padding: 10px 12px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background: var(--white);
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-align: left;
+    transition: all 0.2s ease;
+    color: var(--text-dark);
+}
+
+.district-item:hover {
+    border-color: var(--primary-color);
+    background: #f0f8ff;
+    color: var(--primary-color);
+}
+
+.district-item.active {
+    background: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
 }
 
 @media (max-width: 768px) {
     .header__inner {
         flex-direction: column;
         gap: 10px;
+    }
+
+    .header__popover {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%) translateY(-50%) scale(0.9);
+        width: 90%;
+        max-width: none;
+        min-width: auto;
+    }
+
+    .header__popover.popover--active {
+        transform: translateX(-50%) translateY(-50%) scale(1);
+    }
+
+    .districts-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
