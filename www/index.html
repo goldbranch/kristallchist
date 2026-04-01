@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КристаллЧист — Химчистка на дому</title>
+    <!-- Подключение шрифтов и иконок -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #00a8ff;
+            --primary-dark: #008ecc;
+            --secondary-color: #f1f2f6;
+            --text-color: #2f3542;
+            --text-light: #747d8c;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --container-width: 1200px;
+            --transition: 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        button, input, textarea, select { font-family: inherit; }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn--outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn--outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* --- HEADER --- */
+        .header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header__logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header__district {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            outline: none;
+        }
+
+        .header__phone {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* --- PROMO SECTION --- */
+        .promo {
+            margin-top: 80px; /* offset for fixed header */
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f4f1 100%);
+            padding: 100px 0;
+        }
+
+        .promo__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .promo__content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .promo__content p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .promo__form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .promo__form-group {
+            margin-bottom: 20px;
+        }
+
+        .promo__form input, 
+        .promo__form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            outline: none;
+        }
+
+        .promo__form textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .promo__form-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        /* --- SERVICES --- */
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .services__card {
+            background: var(--white);
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .services__card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+        }
+
+        .services__icon {
+            width: 80px;
+            height: 80px;
+            background: #f0f9ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .services__title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .services__price {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* --- HOW IT WORKS --- */
+        .how-it-works {
+            background-color: var(--secondary-color);
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .step__number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        /* --- REVIEWS --- */
+        .reviews__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .review-card {
+            background: var(--white);
+            border: 1px solid #eee;
+            padding: 25px;
+            border-radius: var(--border-radius);
+        }
+
+        .review-card__header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .review-card__author {
+            font-weight: 700;
+        }
+
+        .review-card__rating {
+            color: #f1c40f;
+        }
+
+        .reviews__controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* --- FAQ --- */
+        .faq__item {
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+
+        .faq__question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 20px 0;
+            font-size: 1.2rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq__answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text-light);
+        }
+
+        .faq__answer p {
+            padding-bottom: 20px;
+        }
+
+        .faq__item.active .faq__answer {
+            max-height: 200px; /* Approximate max height */
+        }
+
+        .faq__item.active .faq__icon {
+            transform: rotate(180deg);
+        }
+
+        /* --- QUALITY CONTROL --- */
+        .quality-control {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .quality-control .section-title {
+            color: var(--white);
+        }
+
+        .quality-control__message {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        .quality-control__buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn--white {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+        
+        .btn--white:hover {
+            background-color: #f1f2f6;
+        }
+
+        /* --- NEWS --- */
+        .news__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .news-card {
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .news-card__img {
+            height: 150px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+        }
+
+        .news-card__content {
+            padding: 20px;
+        }
+
+        .news-card__date {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .news-card__title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- MODAL --- */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal--active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal__content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .modal__close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .services__grid, .news__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header__inner {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .promo__inner {
+                grid-template-columns: 1fr;
+            }
+
+            .services__grid, .reviews__grid, .news__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                flex-direction: column;
+            }
+
+            .quality-control__buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header__inner">
+            <div class="header__logo">
+                <i class="fas fa-gem"></i> КристаллЧист
+            </div>
+            
+            <select class="header__district">
+                <option value="center">Центральный округ</option>
+                <option value="north">Северный округ</option>
+                <option value="south">Южный округ</option>
+                <option value="east">Восточный округ</option>
+                <option value="west">Западный округ</option>
+            </select>
+
+            <div class="header__company-name">
+                Химчистка на дому
+            </div>
+
+            <a href="tel:+74950000000" class="header__phone">+7 (495) 000-00-00</a>
+        </div>
+    </header>
+
+    <!-- Promo Section -->
+    <section class="promo">
+        <div class="container promo__inner">
+            <div class="promo__content">
+                <h1>Химчистка на дому — быстро и с гарантией</h1>
+                <p>Профессиональные мастера приедут к вам и почистят мебель, ковры, одежду и автомобиль. Без вывоза вещей, без хлопот.</p>
+            </div>
+            
+            <form class="promo__form">
+                <div class="promo__form-group">
+                    <input type="text" placeholder="Ваше имя" required>
+                </div>
+                <div class="promo__form-group">
+                    <input type="tel" placeholder="Ваш телефон" required>
+                </div>
+                <div class="promo__form-group">
+                    <textarea placeholder="Что нужно почистить?"></textarea>
+                </div>
+                <div class="promo__form-check">
+                    <input type="checkbox" id="agreement" required>
+                    <label for="agreement">Принимаю пользовательское соглашение.</label>
+                </div>
+                <div class="promo__form-check">
+                    <input type="checkbox" id="personal-data" required>
+                    <label for="personal-data">Соглашаюсь на обработку персональных данных.</label>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Оставить заявку</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="services__grid">
+                <!-- Card 1 -->
+                <div class="services__card">
+                    <div class="services__icon"><i class="fas fa-couch"></i></div>
+                    <h3 class="services__title">Химчистка мягкой мебели</h3>
+                    <span class="services__price">от 490 руб</span>
+                    <button class="btn btn--outline">Подробнее</button>
+                </div>
+                <!-- Card 2 -->
+                <div class="services__card">
+                    <div class="services__icon"><i class="fas fa-rug"></i></div>
+                    <h3 class="services__title">Химчистка ковров</h3>
+                    <span class="services__price">от 390 руб/м²</span>
+                    <button class="btn btn--outline">Подробнее</button>
+                </div>
+                <!-- Card 3 -->
+                <div class="services__card">
+                    <div class="services__icon"><i class="fas fa-bed"></i></div>
+                    <h3 class="services__title">Чистка матрасов</h3>
+                    <span class="services__price">от 1190 руб</span>
+                    <button class="btn btn--outline">Подробнее</button>
+                </div>
+                <!-- Card 4 -->
+                <div class="services__card">
+                    <div class="services__icon"><i class="fas fa-layer-group"></i></div>
+                    <h3 class="services__title">Шторы</h3>
+                    <span class="services__price">от 290 руб/м²</span>
+                    <button class="btn btn--outline">Подробнее</button>
+                </div>
+                <!-- Card 5 -->
+                <div class="services__card">
+                    <div class="services__icon"><i class="fas fa-border-all"></i></div>
+                    <h3 class="services__title">Химчистка ковролина</h3>
+                    <span class="services__price">от 390 руб/м²</span>
+                    <button class="btn btn--outline">Подробнее</button>
+                </div>
+                <!-- Card 6 -->
+                <div class="services__card">
+                    <div class="services__icon"><i class="fas fa-baby-carriage"></i></div>
+                    <h3 class="services__title">Детское автокресло</h3>
+                    <span class="services__price">1 990 руб</span>
+                    <button class="btn btn--outline">Подробнее</button>
+                </div>
+                <!-- Card 7 -->
+                <div class="services__card">
+                    <div class="services__icon"><i class="fas fa-tools"></i></div>
+                    <h3 class="services__title">Дополнительные услуги</h3>
+                    <span class="services__price">от 100 руб/см²</span>
+                    <button class="btn btn--outline">Подробнее</button>
+                </div>
+                <!-- Card 8 (Placeholder to fill grid) -->
+                <div class="services__card">
+                    <div class="services__icon"><i class="fas fa-car"></i></div>
+                    <h3 class="services__title">Химчистка салона авто</h3>
+                    <span class="services__price">Индивидуально</span>
+                    <button class="btn btn--outline">Подробнее</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section how-it-works">
+        <div class="container">
+            <h2 class="section-title">Как это работает</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step__number">1</div>
+                    <h3>Заявка</h3>
+                    <p>Вы оставляете заявку на сайте или по телефону.</p>
+                </div>
+                <div class="step">
+                    <div class="step__number">2</div>
+                    <h3>Оценка</h3>
+                    <p>Мастер приезжает, оценивает объем работ и называет цену.</p>
+                </div>
+                <div class="step">
+                    <div class="step__number">3</div>
+                    <h3>Чистка</h3>
+                    <p>Профессиональная чистка на месте с использованием спецоборудования.</p>
+                </div>
+                <div class="step">
+                    <div class="step__number">4</div>
+                    <h3>Результат</h3>
+                    <p>Вы принимаете работу и наслаждаетесь чистотой.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="section reviews">
+        <div class="container">
+            <h2 class="section-title">Отзывы клиентов</h2>
+            <div class="reviews__grid">
+                <div class="review-card">
+                    <div class="review-card__header">
+                        <span class="review-card__author">Анна Петрова</span>
+                        <div class="review-card__rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <p>Заказывала чистку дивана после ремонта. Пятна ушли полностью, запах свежести! Рекомендую.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-card__header">
+                        <span class="review-card__author">Сергей Иванов</span>
+                        <div class="review-card__rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                    </div>
+                    <p>Чистили ковролин в офисе. Быстро, аккуратно. Цена адекватная для такого объема.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-card__header">
+                        <span class="review-card__author">Елена Смирнова</span>
+                        <div class="review-card__rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <p>Спасли мой любимый светлый матрас от пролитого кофе. Думала, придется выбрасывать. Спасибо КристаллЧист!</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-card__header">
+                        <span class="review-card__author">Дмитрий Козлов</span>
+                        <div class="review-card__rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <p>Чистили детское автокресло. Ребенок аллергик, поэтому важно было качество химии. Все отлично, аллергии нет.</p>
+                </div>
+            </div>
+            <div class="reviews__controls">
+                <a href="#" class="btn btn--outline">Все отзывы</a>
+                <button class="btn js-open-review-modal">Добавить отзыв</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq">
+        <div class="container">
+            <h2 class="section-title">Вопросы и ответы</h2>
+            <div class="faq__list">
+                <div class="faq__item">
+                    <button class="faq__question">
+                        Сколько времени занимает чистка дивана?
+                        <i class="fas fa-chevron-down faq__icon"></i>
+                    </button>
+                    <div class="faq__answer">
+                        <p>В среднем чистка одного дивана занимает от 1 до 2 часов, в зависимости от степени загрязнения и размера.</p>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question">
+                        Безопасна ли химия для детей и животных?
+                        <i class="fas fa-chevron-down faq__icon"></i>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Да, мы используем только сертифицированные гипоаллергенные средства, безопасные для детей и домашних животных.</p>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question">
+                        Как происходит оплата?
+                        <i class="fas fa-chevron-down faq__icon"></i>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Оплата производится после выполнения работ и проверки результата. Принимаем наличные и карты.</p>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question">
+                        Даете ли вы гарантию?
+                        <i class="fas fa-chevron-down faq__icon"></i>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Да, мы даем гарантию на все виды работ. Если пятно проявится в течение 3 дней, мы вернемся и устраним проблему бесплатно.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Control Section -->
+    <section class="section quality-control">
+        <div class="container">
+            <h2 class="section-title">Контроль качества</h2>
+            <p class="quality-control__message">Мы дорожим своей репутацией. Если у вас возникли вопросы по качеству уборки или вы хотите оставить жалобу/предложение, свяжитесь с нашей службой контроля качества.</p>
+            <div class="quality-control__buttons">
+                <a href="tel:+74950000000" class="btn btn--white">Совершить звонок</a>
+                <button class="btn btn--outline js-open-qc-modal" style="border-color: white; color: white;">Оставить сообщение</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="section news">
+        <div class="container">
+            <h2 class="section-title">Новости</h2>
+            <div class="news__grid">
+                <div class="news-card">
+                    <div class="news-card__img"><i class="fas fa-newspaper fa-2x"></i></div>
+                    <div class="news-card__content">
+                        <span class="news-card__date">10 Октября 2023</span>
+                        <h3 class="news-card__title">Скидки на чистку ковров</h3>
+                        <p>Только в этом месяце скидка 15% на чистку ковровых покрытий.</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-card__img"><i class="fas fa-newspaper fa-2x"></i></div>
+                    <div class="news-card__content">
+                        <span class="news-card__date">05 Сентября 2023</span>
+                        <h3 class="news-card__title">Новое оборудование</h3>
+                        <p>Мы закупили новые экстракторы Karcher для более глубокой чистки.</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-card__img"><i class="fas fa-newspaper fa-2x"></i></div>
+                    <div class="news-card__content">
+                        <span class="news-card__date">20 Августа 2023</span>
+                        <h3 class="news-card__title">Работаем в выходные</h3>
+                        <p>Теперь наши мастера готовы выехать к вам даже в воскресенье.</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-card__img"><i class="fas fa-newspaper fa-2x"></i></div>
+                    <div class="news-card__content">
+                        <span class="news-card__date">01 Августа 2023</span>
+                        <h3 class="news-card__title">Чистка автокресел</h3>
+                        <p>Запустили новую услугу по глубокой химчистке детских автокресел.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #333; color: #fff; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <p>&copy; 2023 КристаллЧист. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    
+    <!-- Review Modal -->
+    <div class="modal js-modal" id="review-modal">
+        <div class="modal__content">
+            <span class="modal__close js-modal-close">&times;</span>
+            <h2 style="margin-bottom: 20px;">Добавить отзыв</h2>
+            <form>
+                <div class="promo__form-group">
+                    <input type="text" placeholder="Ваше имя" required>
+                </div>
+                <div class="promo__form-group">
+                    <textarea placeholder="Ваш отзыв" required style="height: 150px;"></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Отправить</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Quality Control Modal -->
+    <div class="modal js-modal" id="qc-modal">
+        <div class="modal__content">
+            <span class="modal__close js-modal-close">&times;</span>
+            <h2 style="margin-bottom: 20px;">Сообщение в службу контроля</h2>
+            <form>
+                <div class="promo__form-group">
+                    <input type="text" placeholder="Ваше имя" required>
+                </div>
+                <div class="promo__form-group">
+                    <input type="tel" placeholder="Телефон для связи" required>
+                </div>
+                <div class="promo__form-group">
+                    <textarea placeholder="Опишите проблему или предложение" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Отправить</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- FAQ Logic ---
+            const faqQuestions = document.querySelectorAll('.faq__question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const item = question.parentElement;
+                    item.classList.toggle('active');
+                });
+            });
+
+            // --- Modal Logic ---
+            const modalOpenBtns = document.querySelectorAll('.js-open-review-modal, .js-open-qc-modal');
+            const modalCloseBtns = document.querySelectorAll('.js-modal-close');
+            const modals = document.querySelectorAll('.js-modal');
+
+            // Open specific modal based on button class
+            modalOpenBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    let targetId;
+                    if (btn.classList.contains('js-open-review-modal')) {
+                        targetId = 'review-modal';
+                    } else if (btn.classList.contains('js-open-qc-modal')) {
+                        targetId = 'qc-modal';
+                    }
+                    
+                    const modal = document.getElementById(targetId);
+                    if (modal) {
+                        modal.classList.add('modal--active');
+                    }
+                });
+            });
+
+            // Close modal
+            modalCloseBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btn.closest('.js-modal').classList.remove('modal--active');
+                });
+            });
+
+            // Close on click outside
+            window.addEventListener('click', (e) => {
+                if (e.target.classList.contains('js-modal')) {
+                    e.target.classList.remove('modal--active');
+                }
+            });
+
+            // --- Form Submission Prevention (Demo) ---
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Спасибо! Ваша заявка отправлена.');
+                    // Close modal if inside one
+                    const modal = form.closest('.js-modal');
+                    if (modal) {
+                        modal.classList.remove('modal--active');
+                    }
+                    form.reset();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
