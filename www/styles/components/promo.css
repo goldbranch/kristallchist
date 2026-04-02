@@ -9,12 +9,53 @@
             rgba(0, 0, 0, 0.35) 40%,
             rgba(0, 0, 0, 0.1) 70%,
             rgba(0, 0, 0, 0) 100%),
-        url('/images/promo/сhistka-divana.webp');
+        url('/images/promo/himchistka.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     padding: 100px 0;
     min-height: calc(100vh - var(--header-height));
+    position: relative;
+}
+
+/* Mobile district button */
+.promo__district-btn {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    transition: all 0.2s ease;
+}
+
+.promo__district-btn:active {
+    transform: scale(0.98);
+}
+
+.promo__district-btn i:last-child {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+}
+
+.promo__district-btn.active i:last-child {
+    transform: rotate(180deg);
+}
+
+.promo__district-name {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .promo__inner {
@@ -88,5 +129,33 @@
 @media (max-width: 768px) {
     .promo__inner {
         grid-template-columns: 1fr;
+    }
+
+    .promo__district-btn {
+        display: flex;
+    }
+
+    .popover {
+        position: fixed;
+        top: auto;
+        left: 10px;
+        right: 10px;
+        bottom: auto;
+        transform: none;
+        max-width: calc(100% - 20px);
+        min-width: auto;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 960px) {
+    .popover__close {
+        display: flex;
+    }
+
+    .districts-grid,
+    .towns-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

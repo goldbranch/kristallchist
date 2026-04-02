@@ -1,19 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- District Popover ---
-    const districtBtn = document.querySelector('.header__district-btn');
-    const districtPopover = document.getElementById('district-popover');
-    const districtClose = document.querySelector('[data-popover-close]');
-    const districtItems = document.querySelectorAll('.district-item');
-    const townItems = document.querySelectorAll('.town-item');
-    const districtName = document.querySelector('.header__district-name');
-    const tabs = document.querySelectorAll('.popover__tab');
-    const tabContents = document.querySelectorAll('.popover__tab-content');
-    const searchInput = document.querySelector('.popover__search-input');
+    const districtBtns = document.querySelectorAll('[data-popover-target="district-popover"]');
+    const headerWrapper = document.querySelector('.header__district-wrapper');
+    const template = document.getElementById('district-popover-template');
+    const districtPopover = template.content.cloneNode(true);
+    
+    // Append popover to header wrapper (for desktop positioning)
+    headerWrapper.appendChild(districtPopover);
+    
+    // Now get references to the cloned elements
+    const popoverEl = document.getElementById('district-popover');
+    const districtClose = popoverEl.querySelector('[data-popover-close]');
+    const districtItems = popoverEl.querySelectorAll('.district-item');
+    const townItems = popoverEl.querySelectorAll('.town-item');
+    const districtNames = document.querySelectorAll('.header__district-name, .promo__district-name');
+    const tabs = popoverEl.querySelectorAll('.popover__tab');
+    const tabContents = popoverEl.querySelectorAll('.popover__tab-content');
+    const searchInput = popoverEl.querySelector('.popover__search-input');
 
     // Load saved district from localStorage
     const savedDistrict = localStorage.getItem('selectedDistrict');
     if (savedDistrict) {
-        districtName.textContent = savedDistrict;
+        districtNames.forEach(name => {
+            name.textContent = savedDistrict;
+        });
         districtItems.forEach(item => {
             if (item.dataset.district === savedDistrict) {
                 item.classList.add('active');
@@ -75,21 +85,68 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Toggle popover
-    districtBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        districtPopover.classList.toggle('popover--active');
-        districtBtn.classList.toggle('active');
-
-        // Focus search input when opening
-        if (districtPopover.classList.contains('popover--active')) {
-            searchInput.focus();
+    let activeBtn = null;
+    
+    const updatePopoverPosition = () => {
+        if (!activeBtn) {
+            return;
         }
+        
+        if (window.innerWidth > 768) {
+            // Desktop: CSS handles positioning relative to header wrapper
+            popoverEl.style.position = '';
+            popoverEl.style.top = '';
+            popoverEl.style.left = '';
+            popoverEl.style.transform = '';
+            popoverEl.style.right = '';
+            popoverEl.style.maxWidth = '';
+            popoverEl.style.zIndex = '';
+            popoverEl.style.bottom = '';
+            return;
+        }
+        
+        // Mobile: position below the promo button
+        const btnRect = activeBtn.getBoundingClientRect();
+        
+        popoverEl.style.position = 'fixed';
+        popoverEl.style.top = (btnRect.bottom + 10) + 'px';
+        popoverEl.style.left = '10px';
+        popoverEl.style.right = '10px';
+        popoverEl.style.bottom = 'auto';
+        popoverEl.style.transform = 'none';
+        popoverEl.style.maxWidth = (window.innerWidth - 20) + 'px';
+        popoverEl.style.zIndex = '10000';
+    };
+
+    districtBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isActive = popoverEl.classList.contains('popover--active');
+
+            // Close first if already open
+            popoverEl.classList.remove('popover--active');
+            districtBtns.forEach(b => b.classList.remove('active'));
+
+            // Open if was closed
+            if (!isActive) {
+                popoverEl.classList.add('popover--active');
+                btn.classList.add('active');
+                activeBtn = btn;
+                updatePopoverPosition();
+                searchInput.focus();
+            }
+        });
     });
+    
+    // Update position on resize and scroll
+    window.addEventListener('resize', updatePopoverPosition);
+    window.addEventListener('scroll', updatePopoverPosition, true);
 
     // Close popover on close button
     districtClose.addEventListener('click', () => {
-        districtPopover.classList.remove('popover--active');
-        districtBtn.classList.remove('active');
+        popoverEl.classList.remove('popover--active');
+        districtBtns.forEach(btn => btn.classList.remove('active'));
+        activeBtn = null;
         searchInput.value = '';
     });
 
@@ -97,15 +154,18 @@ document.addEventListener('DOMContentLoaded', () => {
     districtItems.forEach(item => {
         item.addEventListener('click', () => {
             const district = item.dataset.district;
-            districtName.textContent = district;
+            districtNames.forEach(name => {
+                name.textContent = district;
+            });
             localStorage.setItem('selectedDistrict', district);
 
             districtItems.forEach(i => i.classList.remove('active'));
             townItems.forEach(i => i.classList.remove('active'));
             item.classList.add('active');
 
-            districtPopover.classList.remove('popover--active');
-            districtBtn.classList.remove('active');
+            popoverEl.classList.remove('popover--active');
+            districtBtns.forEach(btn => btn.classList.remove('active'));
+            activeBtn = null;
             searchInput.value = '';
         });
     });
@@ -114,26 +174,30 @@ document.addEventListener('DOMContentLoaded', () => {
     townItems.forEach(item => {
         item.addEventListener('click', () => {
             const town = item.dataset.town;
-            districtName.textContent = town;
+            districtNames.forEach(name => {
+                name.textContent = town;
+            });
             localStorage.setItem('selectedDistrict', town);
 
             districtItems.forEach(i => i.classList.remove('active'));
             townItems.forEach(i => i.classList.remove('active'));
             item.classList.add('active');
 
-            districtPopover.classList.remove('popover--active');
-            districtBtn.classList.remove('active');
+            popoverEl.classList.remove('popover--active');
+            districtBtns.forEach(btn => btn.classList.remove('active'));
+            activeBtn = null;
             searchInput.value = '';
         });
     });
 
     // Close on click outside
     document.addEventListener('click', (e) => {
-        if (districtPopover.classList.contains('popover--active') &&
-            !districtPopover.contains(e.target) &&
-            !districtBtn.contains(e.target)) {
-            districtPopover.classList.remove('popover--active');
-            districtBtn.classList.remove('active');
+        if (popoverEl.classList.contains('popover--active') &&
+            !popoverEl.contains(e.target) &&
+            !Array.from(districtBtns).some(btn => btn.contains(e.target))) {
+            popoverEl.classList.remove('popover--active');
+            districtBtns.forEach(btn => btn.classList.remove('active'));
+            activeBtn = null;
             searchInput.value = '';
         }
     });

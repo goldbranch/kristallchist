@@ -121,7 +121,7 @@
 }
 
 /* Popover */
-.header__popover {
+.popover {
     position: absolute;
     top: calc(100% + 10px);
     left: 0;
@@ -138,7 +138,7 @@
     max-width: 700px;
 }
 
-.header__popover.popover--active {
+.popover.popover--active {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -298,8 +298,15 @@
 }
 
 @media (max-width: 768px) {
-    .header__info,
+    .header__info {
+        display: none;
+    }
+
     .header__district-wrapper {
+        position: static;
+    }
+
+    .header__district-btn {
         display: none;
     }
 
@@ -315,28 +322,8 @@
 }
 
 @media (max-width: 960px) {
-    .header__popover {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        right: auto;
-        bottom: auto;
-        transform: translateX(-50%) translateY(-50%) scale(0.9);
-        width: 90%;
-        max-width: none;
-        min-width: auto;
-    }
-
-    .header__popover.popover--active {
-        transform: translateX(-50%) translateY(-50%) scale(1);
-    }
-
     .popover__close {
         display: flex;
-    }
-
-    .header__popover {
-        display: block;
     }
 
     .districts-grid {
