@@ -6,7 +6,7 @@
     width: 100%;
     top: 0;
     z-index: 1000;
-    height: 70px;
+    height: var(--header-height);
 }
 
 .header__phone {
