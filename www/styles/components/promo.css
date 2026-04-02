@@ -32,6 +32,13 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
+.promo__form-title {
+    font-size: 1.4rem;
+    margin: 0 0 25px 0;
+    color: var(--text-dark);
+    text-align: center;
+}
+
 .promo__form-group {
     margin-bottom: 20px;
 }
