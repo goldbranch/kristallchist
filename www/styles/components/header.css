@@ -86,8 +86,8 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.2s ease;
-    min-width: 400px;
-    max-width: 600px;
+    min-width: 600px;
+    max-width: 700px;
 }
 
 .header__popover.popover--active {
@@ -141,7 +141,7 @@
 
 .districts-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 8px;
 }
 
@@ -155,6 +155,7 @@
     text-align: left;
     transition: all 0.2s ease;
     color: var(--text-dark);
+    white-space: nowrap;
 }
 
 .district-item:hover {
