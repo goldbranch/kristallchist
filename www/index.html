@@ -52,7 +52,7 @@
             <g id="img-max">
                 <path fill-rule="evenodd"
                     d="M12.258 23.88c-2.355 0-3.45-.344-5.353-1.72-1.203 1.548-5.014 2.757-5.18.688 0-1.553-.344-2.865-.734-4.298C.527 16.785 0 14.82 0 11.972 0 5.169 5.582.052 12.195.052 18.814.052 24 5.422 24 12.035A11.805 11.805 0 0 1 12.258 23.88m.097-17.948c-3.22-.167-5.73 2.063-6.286 5.558-.459 2.894.355 6.419 1.048 6.602.333.08 1.17-.596 1.691-1.118a5.96 5.96 0 0 0 2.911 1.038 6.13 6.13 0 0 0 6.413-5.714 6.13 6.13 0 0 0-5.777-6.36z"
-                    clip-rule="evenodd" style="stroke-width:.573064"/>
+                    clip-rule="evenodd" style="stroke-width:.573064" />
             </g>
         </defs>
     </svg>
@@ -237,6 +237,53 @@
         </div>
     </section>
 
+    <!-- Reviews Section -->
+    <section class="section reviews">
+        <div class="container">
+            <h2 class="section-title">Отзывы клиентов</h2>
+            <div class="reviews__grid">
+                <div class="review-card">
+                    <div class="review-card__header">
+                        <span class="review-card__author">Анна Петрова</span>
+                        <div class="review-card__rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <p>Заказывала чистку дивана после ремонта. Пятна ушли полностью, запах свежести! Рекомендую.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-card__header">
+                        <span class="review-card__author">Сергей Иванов</span>
+                        <div class="review-card__rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                    </div>
+                    <p>Чистили ковролин в офисе. Быстро, аккуратно. Цена адекватная для такого объема.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-card__header">
+                        <span class="review-card__author">Елена Смирнова</span>
+                        <div class="review-card__rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <p>Спасли мой любимый светлый матрас от пролитого кофе. Думала, придется выбрасывать. Спасибо
+                        КристаллЧист!</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-card__header">
+                        <span class="review-card__author">Дмитрий Козлов</span>
+                        <div class="review-card__rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <p>Чистили детское автокресло. Ребенок аллергик, поэтому важно было качество химии. Все отлично,
+                        аллергии нет.</p>
+                </div>
+            </div>
+            <div class="reviews__controls">
+                <a href="#" class="btn btn--outline">Все отзывы</a>
+                <button class="btn js-open-review-modal">Добавить отзыв</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section class="section services">
         <div class="container">
@@ -327,53 +374,6 @@
                     <h3>Результат</h3>
                     <p>Вы принимаете работу и наслаждаетесь чистотой.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews Section -->
-    <section class="section reviews">
-        <div class="container">
-            <h2 class="section-title">Отзывы клиентов</h2>
-            <div class="reviews__grid">
-                <div class="review-card">
-                    <div class="review-card__header">
-                        <span class="review-card__author">Анна Петрова</span>
-                        <div class="review-card__rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    </div>
-                    <p>Заказывала чистку дивана после ремонта. Пятна ушли полностью, запах свежести! Рекомендую.</p>
-                </div>
-                <div class="review-card">
-                    <div class="review-card__header">
-                        <span class="review-card__author">Сергей Иванов</span>
-                        <div class="review-card__rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                    </div>
-                    <p>Чистили ковролин в офисе. Быстро, аккуратно. Цена адекватная для такого объема.</p>
-                </div>
-                <div class="review-card">
-                    <div class="review-card__header">
-                        <span class="review-card__author">Елена Смирнова</span>
-                        <div class="review-card__rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    </div>
-                    <p>Спасли мой любимый светлый матрас от пролитого кофе. Думала, придется выбрасывать. Спасибо
-                        КристаллЧист!</p>
-                </div>
-                <div class="review-card">
-                    <div class="review-card__header">
-                        <span class="review-card__author">Дмитрий Козлов</span>
-                        <div class="review-card__rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    </div>
-                    <p>Чистили детское автокресло. Ребенок аллергик, поэтому важно было качество химии. Все отлично,
-                        аллергии нет.</p>
-                </div>
-            </div>
-            <div class="reviews__controls">
-                <a href="#" class="btn btn--outline">Все отзывы</a>
-                <button class="btn js-open-review-modal">Добавить отзыв</button>
             </div>
         </div>
     </section>
