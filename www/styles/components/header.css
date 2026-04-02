@@ -21,6 +21,55 @@
     height: 100%;
 }
 
+.header__info {
+    display: flex;
+    gap: 30px;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.header__info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header__info-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    fill: var(--primary-color);
+}
+
+.header__info-icon-wrapper {
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.header__info-title {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.header__info-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
 .header__logo {
     font-size: 1.5rem;
     font-weight: 700;
