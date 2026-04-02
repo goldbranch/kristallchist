@@ -9,7 +9,7 @@
             rgba(0, 0, 0, 0.35) 40%,
             rgba(0, 0, 0, 0.1) 70%,
             rgba(0, 0, 0, 0) 100%),
-        url('/images/promo/himchistka.png');
+        url('/images/promo/сhistka-divana.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -79,7 +79,7 @@
 }
 
 .promo__form {
-    background: var(--white);
+    background: #ffffffb0;
     padding: 40px;
     border-radius: var(--border-radius);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -103,6 +103,7 @@
     border: 1px solid #ddd;
     border-radius: var(--border-radius);
     outline: none;
+    font-size: 1rem;
 }
 
 .promo__form textarea {
