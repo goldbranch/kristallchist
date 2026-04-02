@@ -298,9 +298,19 @@
 }
 
 @media (max-width: 768px) {
+    .header__info,
+    .header__district-wrapper {
+        display: none;
+    }
+
     .header__inner {
-        flex-direction: column;
-        gap: 10px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header__phone {
+        margin-left: 0;
     }
 }
 
