@@ -1,7 +1,7 @@
 /* --- PROMO SECTION --- */
 .promo {
-    margin-top: 80px;
     /* offset for fixed header */
+    margin-top: 70px;
     background: linear-gradient(135deg, #f0f9ff 0%, #e6f4f1 100%);
     padding: 100px 0;
 }
