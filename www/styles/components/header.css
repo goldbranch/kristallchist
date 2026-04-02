@@ -16,8 +16,8 @@
 
 .header__inner {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .header__logo {
@@ -40,11 +40,20 @@
     cursor: pointer;
     font-size: 0.95rem;
     transition: all 0.2s ease;
+    margin-left: 20px;
+}
+
+.header__district-wrapper {
+    position: relative;
 }
 
 .header__district-btn:hover {
     border-color: var(--primary-color);
     background: #f8f9fa;
+}
+
+.header__phone {
+    margin-left: auto;
 }
 
 .header__district-btn i:last-child {
@@ -67,8 +76,8 @@
 .header__popover {
     position: absolute;
     top: calc(100% + 10px);
-    left: 50%;
-    transform: translateX(-50%) translateY(-10px);
+    left: 0;
+    transform: translateY(-10px);
     background: var(--white);
     border-radius: var(--border-radius);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
@@ -84,7 +93,7 @@
 .header__popover.popover--active {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
 }
 
 .popover__header {
@@ -170,6 +179,7 @@
         top: 50%;
         left: 50%;
         right: auto;
+        bottom: auto;
         transform: translateX(-50%) translateY(-50%) scale(0.9);
         width: 90%;
         max-width: none;

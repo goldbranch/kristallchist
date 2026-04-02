@@ -17,50 +17,52 @@
             <div class="header__logo">
                 <i class="fas fa-gem"></i> КристаллЧист
             </div>
-            
-            <button class="header__district-btn" data-popover-target="district-popover">
-                <i class="fas fa-map-marker-alt"></i>
-                <span class="header__district-name">Выберите район</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
 
-            <div class="header__popover popover" id="district-popover" data-popover>
-                <div class="popover__header">
-                    <h3>Районы Москвы</h3>
-                    <button class="popover__close" data-popover-close>&times;</button>
-                </div>
-                <div class="popover__content">
-                    <div class="districts-grid">
-                        <button class="district-item" data-district="Арбат">Арбат</button>
-                        <button class="district-item" data-district="Басманный">Басманный</button>
-                        <button class="district-item" data-district="Замоскворечье">Замоскворечье</button>
-                        <button class="district-item" data-district="Хамовники">Хамовники</button>
-                        <button class="district-item" data-district="Якиманка">Якиманка</button>
-                        <button class="district-item" data-district="Академический">Академический</button>
-                        <button class="district-item" data-district="Гагаринский">Гагаринский</button>
-                        <button class="district-item" data-district="Черёмушки">Черёмушки</button>
-                        <button class="district-item" data-district="Котловка">Котловка</button>
-                        <button class="district-item" data-district="Зюзино">Зюзино</button>
-                        <button class="district-item" data-district="Бабушкинский">Бабушкинский</button>
-                        <button class="district-item" data-district="Лосиноостровский">Лосиноостровский</button>
-                        <button class="district-item" data-district="Марьина Роща">Марьина Роща</button>
-                        <button class="district-item" data-district="Алтуфьевский">Алтуфьевский</button>
-                        <button class="district-item" data-district="Медведково">Медведково</button>
-                        <button class="district-item" data-district="Выхино-Жулебино">Выхино-Жулебино</button>
-                        <button class="district-item" data-district="Марьино">Марьино</button>
-                        <button class="district-item" data-district="Люблино">Люблино</button>
-                        <button class="district-item" data-district="Кузьминки">Кузьминки</button>
-                        <button class="district-item" data-district="Нижегородский">Нижегородский</button>
-                        <button class="district-item" data-district="Перово">Перово</button>
-                        <button class="district-item" data-district="Измайлово">Измайлово</button>
-                        <button class="district-item" data-district="Богородское">Богородское</button>
-                        <button class="district-item" data-district="Преображенское">Преображенское</button>
-                        <button class="district-item" data-district="Соколиная Гора">Соколиная Гора</button>
-                        <button class="district-item" data-district="Митино">Митино</button>
-                        <button class="district-item" data-district="Строгино">Строгино</button>
-                        <button class="district-item" data-district="Тушино">Тушино</button>
-                        <button class="district-item" data-district="Щукино">Щукино</button>
-                        <button class="district-item" data-district="Южное Бутово">Южное Бутово</button>
+            <div class="header__district-wrapper">
+                <button class="header__district-btn" data-popover-target="district-popover">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="header__district-name">Выберите район</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+
+                <div class="header__popover popover" id="district-popover" data-popover>
+                    <div class="popover__header">
+                        <h3>Районы Москвы</h3>
+                        <button class="popover__close" data-popover-close>&times;</button>
+                    </div>
+                    <div class="popover__content">
+                        <div class="districts-grid">
+                            <button class="district-item" data-district="Арбат">Арбат</button>
+                            <button class="district-item" data-district="Басманный">Басманный</button>
+                            <button class="district-item" data-district="Замоскворечье">Замоскворечье</button>
+                            <button class="district-item" data-district="Хамовники">Хамовники</button>
+                            <button class="district-item" data-district="Якиманка">Якиманка</button>
+                            <button class="district-item" data-district="Академический">Академический</button>
+                            <button class="district-item" data-district="Гагаринский">Гагаринский</button>
+                            <button class="district-item" data-district="Черёмушки">Черёмушки</button>
+                            <button class="district-item" data-district="Котловка">Котловка</button>
+                            <button class="district-item" data-district="Зюзино">Зюзино</button>
+                            <button class="district-item" data-district="Бабушкинский">Бабушкинский</button>
+                            <button class="district-item" data-district="Лосиноостровский">Лосиноостровский</button>
+                            <button class="district-item" data-district="Марьина Роща">Марьина Роща</button>
+                            <button class="district-item" data-district="Алтуфьевский">Алтуфьевский</button>
+                            <button class="district-item" data-district="Медведково">Медведково</button>
+                            <button class="district-item" data-district="Выхино-Жулебино">Выхино-Жулебино</button>
+                            <button class="district-item" data-district="Марьино">Марьино</button>
+                            <button class="district-item" data-district="Люблино">Люблино</button>
+                            <button class="district-item" data-district="Кузьминки">Кузьминки</button>
+                            <button class="district-item" data-district="Нижегородский">Нижегородский</button>
+                            <button class="district-item" data-district="Перово">Перово</button>
+                            <button class="district-item" data-district="Измайлово">Измайлово</button>
+                            <button class="district-item" data-district="Богородское">Богородское</button>
+                            <button class="district-item" data-district="Преображенское">Преображенское</button>
+                            <button class="district-item" data-district="Соколиная Гора">Соколиная Гора</button>
+                            <button class="district-item" data-district="Митино">Митино</button>
+                            <button class="district-item" data-district="Строгино">Строгино</button>
+                            <button class="district-item" data-district="Тушино">Тушино</button>
+                            <button class="district-item" data-district="Щукино">Щукино</button>
+                            <button class="district-item" data-district="Южное Бутово">Южное Бутово</button>
+                        </div>
                     </div>
                 </div>
             </div>
