@@ -34,13 +34,12 @@
     align-items: center;
     gap: 8px;
     padding: 8px 16px;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-    background: var(--white);
     cursor: pointer;
-    font-size: 0.95rem;
-    transition: all 0.2s ease;
+    font-size: 1rem;
     margin-left: 20px;
+    transition: all 0.2s ease;
+    background: var(--white); 
+    border: none;
 }
 
 .header__district-wrapper {
@@ -48,8 +47,7 @@
 }
 
 .header__district-btn:hover {
-    border-color: var(--primary-color);
-    background: #f8f9fa;
+    background: #f8f9fa; 
 }
 
 .header__phone {
