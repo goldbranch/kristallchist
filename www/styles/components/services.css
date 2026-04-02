@@ -12,6 +12,9 @@
     padding: 30px 20px;
     text-align: center;
     transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    min-height: 325px;
 }
 
 .services__icon {
@@ -37,6 +40,10 @@
     color: var(--primary-color);
     margin-bottom: 20px;
     display: block;
+}
+
+.services__card .btn {
+    margin-top: auto;
 }
 
 @media (max-width: 1024px) {
