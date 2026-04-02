@@ -39,7 +39,7 @@
     font-size: 1rem;
     margin-left: 20px;
     transition: all 0.2s ease;
-    background: var(--white); 
+    background: var(--white);
     border: none;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .header__district-btn:hover {
-    background: #f8f9fa; 
+    background: #f8f9fa;
 }
 
 .header__phone {
@@ -170,7 +170,6 @@
     padding: 0;
     width: 30px;
     height: 30px;
-    display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
@@ -254,7 +253,9 @@
         flex-direction: column;
         gap: 10px;
     }
+}
 
+@media (max-width: 960px) {
     .header__popover {
         position: fixed;
         top: 50%;
@@ -271,6 +272,10 @@
         transform: translateX(-50%) translateY(-50%) scale(1);
     }
 
+    .popover__close {
+        display: flex;
+    }
+
     .header__popover {
         display: block;
     }
@@ -278,4 +283,5 @@
     .districts-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
 }
