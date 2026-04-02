@@ -33,6 +33,9 @@
                         </div>
                         <button class="popover__close" data-popover-close>&times;</button>
                     </div>
+                    <div class="popover__search">
+                        <input type="text" class="popover__search-input" placeholder="Поиск...">
+                    </div>
                     <div class="popover__content">
                         <div class="popover__tab-content popover__tab-content--active" data-tab-content="districts">
                             <div class="districts-grid">
@@ -485,6 +488,7 @@
             const districtName = document.querySelector('.header__district-name');
             const tabs = document.querySelectorAll('.popover__tab');
             const tabContents = document.querySelectorAll('.popover__tab-content');
+            const searchInput = document.querySelector('.popover__search-input');
 
             // Load saved district from localStorage
             const savedDistrict = localStorage.getItem('selectedDistrict');
@@ -502,6 +506,24 @@
                 });
             }
 
+            // Search filter
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase().trim();
+                const activeTab = document.querySelector('.popover__tab.popover__tab--active');
+                const activeTabContent = activeTab ? activeTab.dataset.tab : 'districts';
+
+                const items = activeTabContent === 'districts' ? districtItems : townItems;
+
+                items.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+
             // Toggle tabs
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
@@ -516,6 +538,19 @@
                             content.classList.add('popover__tab-content--active');
                         }
                     });
+
+                    // Apply current search filter to new tab
+                    const query = searchInput.value.toLowerCase().trim();
+                    const items = tabId === 'districts' ? districtItems : townItems;
+
+                    items.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        if (text.includes(query)) {
+                            item.style.display = '';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
                 });
             });
 
@@ -524,12 +559,18 @@
                 e.stopPropagation();
                 districtPopover.classList.toggle('popover--active');
                 districtBtn.classList.toggle('active');
+                
+                // Focus search input when opening
+                if (districtPopover.classList.contains('popover--active')) {
+                    searchInput.focus();
+                }
             });
 
             // Close popover on close button
             districtClose.addEventListener('click', () => {
                 districtPopover.classList.remove('popover--active');
                 districtBtn.classList.remove('active');
+                searchInput.value = '';
             });
 
             // Select district
@@ -545,6 +586,7 @@
 
                     districtPopover.classList.remove('popover--active');
                     districtBtn.classList.remove('active');
+                    searchInput.value = '';
                 });
             });
 
@@ -561,6 +603,7 @@
 
                     districtPopover.classList.remove('popover--active');
                     districtBtn.classList.remove('active');
+                    searchInput.value = '';
                 });
             });
 
@@ -571,6 +614,7 @@
                     !districtBtn.contains(e.target)) {
                     districtPopover.classList.remove('popover--active');
                     districtBtn.classList.remove('active');
+                    searchInput.value = '';
                 }
             });
 

@@ -137,6 +137,30 @@
     display: block;
 }
 
+.popover__search {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.popover__search-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.popover__search-input:focus {
+    border-color: var(--primary-color);
+}
+
+.popover__search-input::placeholder {
+    color: #999;
+}
+
 .popover__close {
     background: none;
     border: none;
