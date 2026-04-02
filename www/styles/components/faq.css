@@ -27,10 +27,11 @@
 
         .faq__answer p {
             padding-bottom: 20px;
+            margin: 0;
         }
 
         .faq__item.active .faq__answer {
-            max-height: 200px; /* Approximate max height */
+            max-height: 500px;
         }
 
         .faq__item.active .faq__icon {

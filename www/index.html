@@ -670,6 +670,15 @@
                     form.reset();
                 });
             });
+
+            // --- FAQ Accordion ---
+            const faqQuestions = document.querySelectorAll('.faq__question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.closest('.faq__item');
+                    faqItem.classList.toggle('active');
+                });
+            });
         });
     </script>
 </body>
