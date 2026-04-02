@@ -27,41 +27,124 @@
 
                 <div class="header__popover popover" id="district-popover" data-popover>
                     <div class="popover__header">
-                        <h3>Районы Москвы</h3>
+                        <div class="popover__tabs">
+                            <button class="popover__tab popover__tab--active" data-tab="districts">Районы Москвы</button>
+                            <button class="popover__tab" data-tab="towns">Города</button>
+                        </div>
                         <button class="popover__close" data-popover-close>&times;</button>
                     </div>
                     <div class="popover__content">
-                        <div class="districts-grid">
-                            <button class="district-item" data-district="Арбат">Арбат</button>
-                            <button class="district-item" data-district="Басманный">Басманный</button>
-                            <button class="district-item" data-district="Замоскворечье">Замоскворечье</button>
-                            <button class="district-item" data-district="Хамовники">Хамовники</button>
-                            <button class="district-item" data-district="Якиманка">Якиманка</button>
-                            <button class="district-item" data-district="Академический">Академический</button>
-                            <button class="district-item" data-district="Гагаринский">Гагаринский</button>
-                            <button class="district-item" data-district="Черёмушки">Черёмушки</button>
-                            <button class="district-item" data-district="Котловка">Котловка</button>
-                            <button class="district-item" data-district="Зюзино">Зюзино</button>
-                            <button class="district-item" data-district="Бабушкинский">Бабушкинский</button>
-                            <button class="district-item" data-district="Лосиноостровский">Лосиноостровский</button>
-                            <button class="district-item" data-district="Марьина Роща">Марьина Роща</button>
-                            <button class="district-item" data-district="Алтуфьевский">Алтуфьевский</button>
-                            <button class="district-item" data-district="Медведково">Медведково</button>
-                            <button class="district-item" data-district="Выхино-Жулебино">Выхино-Жулебино</button>
-                            <button class="district-item" data-district="Марьино">Марьино</button>
-                            <button class="district-item" data-district="Люблино">Люблино</button>
-                            <button class="district-item" data-district="Кузьминки">Кузьминки</button>
-                            <button class="district-item" data-district="Нижегородский">Нижегородский</button>
-                            <button class="district-item" data-district="Перово">Перово</button>
-                            <button class="district-item" data-district="Измайлово">Измайлово</button>
-                            <button class="district-item" data-district="Богородское">Богородское</button>
-                            <button class="district-item" data-district="Преображенское">Преображенское</button>
-                            <button class="district-item" data-district="Соколиная Гора">Соколиная Гора</button>
-                            <button class="district-item" data-district="Митино">Митино</button>
-                            <button class="district-item" data-district="Строгино">Строгино</button>
-                            <button class="district-item" data-district="Тушино">Тушино</button>
-                            <button class="district-item" data-district="Щукино">Щукино</button>
-                            <button class="district-item" data-district="Южное Бутово">Южное Бутово</button>
+                        <div class="popover__tab-content popover__tab-content--active" data-tab-content="districts">
+                            <div class="districts-grid">
+                                <button class="district-item" data-district="Арбат">Арбат</button>
+                                <button class="district-item" data-district="Басманный">Басманный</button>
+                                <button class="district-item" data-district="Замоскворечье">Замоскворечье</button>
+                                <button class="district-item" data-district="Хамовники">Хамовники</button>
+                                <button class="district-item" data-district="Якиманка">Якиманка</button>
+                                <button class="district-item" data-district="Академический">Академический</button>
+                                <button class="district-item" data-district="Гагаринский">Гагаринский</button>
+                                <button class="district-item" data-district="Черёмушки">Черёмушки</button>
+                                <button class="district-item" data-district="Котловка">Котловка</button>
+                                <button class="district-item" data-district="Зюзино">Зюзино</button>
+                                <button class="district-item" data-district="Бабушкинский">Бабушкинский</button>
+                                <button class="district-item" data-district="Лосиноостровский">Лосиноостровский</button>
+                                <button class="district-item" data-district="Марьина Роща">Марьина Роща</button>
+                                <button class="district-item" data-district="Алтуфьевский">Алтуфьевский</button>
+                                <button class="district-item" data-district="Медведково">Медведково</button>
+                                <button class="district-item" data-district="Выхино-Жулебино">Выхино-Жулебино</button>
+                                <button class="district-item" data-district="Марьино">Марьино</button>
+                                <button class="district-item" data-district="Люблино">Люблино</button>
+                                <button class="district-item" data-district="Кузьминки">Кузьминки</button>
+                                <button class="district-item" data-district="Нижегородский">Нижегородский</button>
+                                <button class="district-item" data-district="Перово">Перово</button>
+                                <button class="district-item" data-district="Измайлово">Измайлово</button>
+                                <button class="district-item" data-district="Богородское">Богородское</button>
+                                <button class="district-item" data-district="Преображенское">Преображенское</button>
+                                <button class="district-item" data-district="Соколиная Гора">Соколиная Гора</button>
+                                <button class="district-item" data-district="Митино">Митино</button>
+                                <button class="district-item" data-district="Строгино">Строгино</button>
+                                <button class="district-item" data-district="Тушино">Тушино</button>
+                                <button class="district-item" data-district="Щукино">Щукино</button>
+                                <button class="district-item" data-district="Южное Бутово">Южное Бутово</button>
+                            </div>
+                        </div>
+                        <div class="popover__tab-content" data-tab-content="towns">
+                            <div class="towns-grid">
+                                <button class="town-item" data-town="Апрелевка">Апрелевка</button>
+                                <button class="town-item" data-town="Балашиха">Балашиха</button>
+                                <button class="town-item" data-town="Белоозёрский">Белоозёрский</button>
+                                <button class="town-item" data-town="Бронницы">Бронницы</button>
+                                <button class="town-item" data-town="Верея">Верея</button>
+                                <button class="town-item" data-town="Видное">Видное</button>
+                                <button class="town-item" data-town="Волоколамск">Волоколамск</button>
+                                <button class="town-item" data-town="Воскресенск">Воскресенск</button>
+                                <button class="town-item" data-town="Высоковск">Высоковск</button>
+                                <button class="town-item" data-town="Голицыно">Голицыно</button>
+                                <button class="town-item" data-town="Дедовск">Дедовск</button>
+                                <button class="town-item" data-town="Дзержинский">Дзержинский</button>
+                                <button class="town-item" data-town="Дмитров">Дмитров</button>
+                                <button class="town-item" data-town="Долгопрудный">Долгопрудный</button>
+                                <button class="town-item" data-town="Домодедово">Домодедово</button>
+                                <button class="town-item" data-town="Дрезна">Дрезна</button>
+                                <button class="town-item" data-town="Дубна">Дубна</button>
+                                <button class="town-item" data-town="Егорьевск">Егорьевск</button>
+                                <button class="town-item" data-town="Жуковский">Жуковский</button>
+                                <button class="town-item" data-town="Зарайск">Зарайск</button>
+                                <button class="town-item" data-town="Звенигород">Звенигород</button>
+                                <button class="town-item" data-town="Ивантеевка">Ивантеевка</button>
+                                <button class="town-item" data-town="Истра">Истра</button>
+                                <button class="town-item" data-town="Кашира">Кашира</button>
+                                <button class="town-item" data-town="Клин">Клин</button>
+                                <button class="town-item" data-town="Коломна">Коломна</button>
+                                <button class="town-item" data-town="Королёв">Королёв</button>
+                                <button class="town-item" data-town="Котельники">Котельники</button>
+                                <button class="town-item" data-town="Красноармейск">Красноармейск</button>
+                                <button class="town-item" data-town="Красногорск">Красногорск</button>
+                                <button class="town-item" data-town="Краснозаводск">Краснозаводск</button>
+                                <button class="town-item" data-town="Краснознаменск">Краснознаменск</button>
+                                <button class="town-item" data-town="Кубинка">Кубинка</button>
+                                <button class="town-item" data-town="Куровское">Куровское</button>
+                                <button class="town-item" data-town="Ликино-Дулёво">Ликино-Дулёво</button>
+                                <button class="town-item" data-town="Лобня">Лобня</button>
+                                <button class="town-item" data-town="Лосино-Петровский">Лосино-Петровский</button>
+                                <button class="town-item" data-town="Луховицы">Луховицы</button>
+                                <button class="town-item" data-town="Лыткарино">Лыткарино</button>
+                                <button class="town-item" data-town="Люберцы">Люберцы</button>
+                                <button class="town-item" data-town="Можайск">Можайск</button>
+                                <button class="town-item" data-town="Мытищи">Мытищи</button>
+                                <button class="town-item" data-town="Наро-Фоминск">Наро-Фоминск</button>
+                                <button class="town-item" data-town="Ногинск">Ногинск</button>
+                                <button class="town-item" data-town="Одинцово">Одинцово</button>
+                                <button class="town-item" data-town="Озёры">Озёры</button>
+                                <button class="town-item" data-town="Орехово-Зуево">Орехово-Зуево</button>
+                                <button class="town-item" data-town="Павловский Посад">Павловский Посад</button>
+                                <button class="town-item" data-town="Пересвет">Пересвет</button>
+                                <button class="town-item" data-town="Подольск">Подольск</button>
+                                <button class="town-item" data-town="Протвино">Протвино</button>
+                                <button class="town-item" data-town="Пушкино">Пушкино</button>
+                                <button class="town-item" data-town="Пущино">Пущино</button>
+                                <button class="town-item" data-town="Раменское">Раменское</button>
+                                <button class="town-item" data-town="Реутов">Реутов</button>
+                                <button class="town-item" data-town="Рошаль">Рошаль</button>
+                                <button class="town-item" data-town="Руза">Руза</button>
+                                <button class="town-item" data-town="Сергиев Посад">Сергиев Посад</button>
+                                <button class="town-item" data-town="Серпухов">Серпухов</button>
+                                <button class="town-item" data-town="Солнечногорск">Солнечногорск</button>
+                                <button class="town-item" data-town="Старая Купавна">Старая Купавна</button>
+                                <button class="town-item" data-town="Ступино">Ступино</button>
+                                <button class="town-item" data-town="Талдом">Талдом</button>
+                                <button class="town-item" data-town="Фрязино">Фрязино</button>
+                                <button class="town-item" data-town="Химки">Химки</button>
+                                <button class="town-item" data-town="Хотьково">Хотьково</button>
+                                <button class="town-item" data-town="Черноголовка">Черноголовка</button>
+                                <button class="town-item" data-town="Чехов">Чехов</button>
+                                <button class="town-item" data-town="Шатура">Шатура</button>
+                                <button class="town-item" data-town="Щёлково">Щёлково</button>
+                                <button class="town-item" data-town="Электрогорск">Электрогорск</button>
+                                <button class="town-item" data-town="Электросталь">Электросталь</button>
+                                <button class="town-item" data-town="Электроугли">Электроугли</button>
+                                <button class="town-item" data-town="Яхрома">Яхрома</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -398,7 +481,10 @@
             const districtPopover = document.getElementById('district-popover');
             const districtClose = document.querySelector('[data-popover-close]');
             const districtItems = document.querySelectorAll('.district-item');
+            const townItems = document.querySelectorAll('.town-item');
             const districtName = document.querySelector('.header__district-name');
+            const tabs = document.querySelectorAll('.popover__tab');
+            const tabContents = document.querySelectorAll('.popover__tab-content');
 
             // Load saved district from localStorage
             const savedDistrict = localStorage.getItem('selectedDistrict');
@@ -409,7 +495,29 @@
                         item.classList.add('active');
                     }
                 });
+                townItems.forEach(item => {
+                    if (item.dataset.town === savedDistrict) {
+                        item.classList.add('active');
+                    }
+                });
             }
+
+            // Toggle tabs
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.dataset.tab;
+
+                    tabs.forEach(t => t.classList.remove('popover__tab--active'));
+                    tab.classList.add('popover__tab--active');
+
+                    tabContents.forEach(content => {
+                        content.classList.remove('popover__tab-content--active');
+                        if (content.dataset.tabContent === tabId) {
+                            content.classList.add('popover__tab-content--active');
+                        }
+                    });
+                });
+            });
 
             // Toggle popover
             districtBtn.addEventListener('click', (e) => {
@@ -432,6 +540,23 @@
                     localStorage.setItem('selectedDistrict', district);
 
                     districtItems.forEach(i => i.classList.remove('active'));
+                    townItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+
+                    districtPopover.classList.remove('popover--active');
+                    districtBtn.classList.remove('active');
+                });
+            });
+
+            // Select town
+            townItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const town = item.dataset.town;
+                    districtName.textContent = town;
+                    localStorage.setItem('selectedDistrict', town);
+
+                    districtItems.forEach(i => i.classList.remove('active'));
+                    townItems.forEach(i => i.classList.remove('active'));
                     item.classList.add('active');
 
                     districtPopover.classList.remove('popover--active');
