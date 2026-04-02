@@ -1,0 +1,23 @@
+.social__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.social__link {
+    border-radius: 50%;
+    background-color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.social__link:hover {
+    background-color: var(--primary-color);
+}
+
+.social__icon {
+    fill: var(--white);
+}
