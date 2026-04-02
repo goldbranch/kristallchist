@@ -9,6 +9,11 @@
     padding: 15px 0;
 }
 
+.header__phone {
+    font-size: 24px;
+    font-weight: 500;
+}
+
 .header__inner {
     display: flex;
     justify-content: space-between;
