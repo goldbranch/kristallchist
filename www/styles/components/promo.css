@@ -14,6 +14,7 @@
     background-position: center;
     background-repeat: no-repeat;
     padding: 100px 0;
+    min-height: calc(100vh - 70px);
 }
 
 .promo__inner {
